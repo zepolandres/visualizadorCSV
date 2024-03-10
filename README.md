@@ -3,7 +3,17 @@ Carga del Archivo CSV: Los usuarios suben un archivo CSV con columnas de Fecha, 
 
 Procesamiento de Datos: Utiliza PapaParse para analizar y convertir el contenido del archivo CSV en un formato adecuado para su visualización.
 
-Lógica de Visualización: Se utiliza la biblioteca  Chart.js para mostrar los datos en un gráfico de líneas, permitiendo la visualización de la evolución de los sentimientos a lo largo del tiempo.
+Lógica de Visualización: Se utiliza la biblioteca  Chart.js para mostrar los datos en un gráfico de líneas.
+
+
+# Tecnologias
+Vue.js
+PapaParse
+Chart.js
+
+# Requisitos
+Node.js => https://nodejs.org/en/download/
+Npm 
 
 
 
