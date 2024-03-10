@@ -1,34 +1,86 @@
-Visualizador de Sentimientos de Posts en CSV
-Esta aplicacion Vue.js permite cargar un archivo CSV desde el dispositivo del usuario. El archivo debe tener columnas para Fecha, Post, Positividad, Negatividad y Neutralidad. Una vez cargado, el proyecto muestra los resultados de los sentimientos de los posts en una gráfica de tiempo.
+# visualizadorCSV
 
-Instalación del Proyecto
-Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
-bash
-Copy code
-git clone https://github.com/zepolandres/visualizadorCSV.git
-Navega hasta el directorio del proyecto:
 
-bash
-Copy code
+## Clona este repositorio en tu máquina local utilizando el siguiente comando:
+```
+git clone https://github.com/zepolandres/visualizadorCSV.git 
+```
+
+## Navega hasta el directorio del proyecto
+```
 cd visualizadorcsv
-Instala las dependencias del proyecto utilizando npm:
+```
 
-Copy code
+
+## Instala las dependencias del proyecto utilizando npm:
+```
 npm install
-Ejecución del Proyecto
+```
+
+### Ejecución del Proyecto
 Una vez que hayas instalado las dependencias, puedes ejecutar el proyecto utilizando el siguiente comando:
-
-
-Copy code
+```
 npm run serve
-Esto iniciará un servidor local y podrás acceder al visualizador de datos CSV en tu navegador visitando la dirección http://localhost:8080.
+```
 
-Proceso de Carga y Procesamiento de Datos CSV
-El proceso de carga y procesamiento de datos CSV se realiza de la siguiente manera:
+Esto iniciará un servidor local y podrás acceder al visualizador de datos CSV en tu navegador visitando la dirección http://localhost:8080
 
-Carga del Archivo CSV: El usuario puede cargar un archivo csv desde su dispositivo utilizando un formulario de carga de archivos.Este archivo debe contener las siguientes columnas: Fecha, Post, Positividad, Negatividad y Neutralidad. Una vez cargado el archivo, el proyecto procesará los datos y generará una gráfica de tiempo que muestra la evolución de los sentimientos de los posts a lo largo del tiempo.
+### Compila para producción
+```
+npm run build
+```
 
-Procesamiento de Datos: Una vez que se carga el archivo CSV, el proyecto utiliza la biblioteca PapaParse para analizar el contenido del archivo y convertirlo en un formato que pueda ser utilizado por el visualizador.
 
-Lógica de Visualización: Los datos analizados se utilizan para generar un gráfico de líneas utilizando la biblioteca Chart.js. El gráfico muestra la evolución de los datos a lo largo del tiempo, con etiquetas y colores.
+### Proceso de Carga y Procesamiento de Datos CSV
+
+Carga del Archivo CSV: Los usuarios suben un archivo CSV con columnas de Fecha, Post, Positividad, Negatividad y Neutralidad. El proyecto procesa estos datos y muestra la evolución de los sentimientos en una gráfica de tiempo.
+
+Procesamiento de Datos: Utiliza PapaParse para analizar y convertir el contenido del archivo CSV en un formato adecuado para su visualización.
+
+Lógica de Visualización: Se utiliza la biblioteca  Chart.js para mostrar los datos en un gráfico de líneas, permitiendo la visualización de la evolución de los sentimientos a lo largo del tiempo.
+
+
+### Proceso de carga:
+
+#### El usuario carga un archivo CSV utilizando un input de tipo archivo en CargarArchivo.vue
+```
+<input type="file" accept=".csv" @change="importCSV">
+```
+
+
+#### En el método importCSV, se lee el archivo y se parsea con PapaParse.
+```
+import Papa from 'papaparse';
+reader.onload = () => {
+    const data = Papa.parse(reader.result, { header: true }).data;
+    this.$emit('csv-loaded', data);
+};
+```
+
+
+#### Procesamiento de datos CSV:
+
+Los datos CSV parseados se emiten utilizando el evento csv-loaded.
+```
+this.$emit('csv-loaded', data);
+```
+Se reciben los datos en MostrarGrafico.vue como una propiedad llamada csvData.
+
+#### Lógica de visualización:
+
+En MostrarGrafico.vue, los datos CSV se utilizan para generar una gráfica de líneas con Chart.js
+
+```
+new Chart(ctx, {
+    type: 'line',
+    data: { ... },
+    options: { ... }
+});
+```
+
+Se crean datasets para representar diferentes aspectos del sentimiento a lo largo del tiempo.
+La gráfica se renderiza en un elemento canvas en el DOM.
+```
+<canvas ref="chartCanvas"></canvas>
+```
