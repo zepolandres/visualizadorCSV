@@ -1,6 +1,6 @@
 <template>
     <div id="mainFrame">
-      <h1>Visualizar Sentimientos CSV</h1>
+      <h1>Visualizador CSV</h1>
       <Estilos />
       <CargarArchivo @csv-loaded="handleCSVLoaded" />
       <MostrarGrafico :csv-data="csvData" v-if="csvData" />

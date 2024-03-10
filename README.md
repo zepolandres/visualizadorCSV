@@ -1,4 +1,9 @@
 # visualizadorCSV
+Carga del Archivo CSV: Los usuarios suben un archivo CSV con columnas de Fecha, Post, Positividad, Negatividad y Neutralidad. El proyecto procesa estos datos y muestra la evolución de los sentimientos en una gráfica de tiempo.
+
+Procesamiento de Datos: Utiliza PapaParse para analizar y convertir el contenido del archivo CSV en un formato adecuado para su visualización.
+
+Lógica de Visualización: Se utiliza la biblioteca  Chart.js para mostrar los datos en un gráfico de líneas, permitiendo la visualización de la evolución de los sentimientos a lo largo del tiempo.
 
 
 
@@ -34,14 +39,6 @@ npm run build
 
 ### Proceso de Carga y Procesamiento de Datos CSV
 
-Carga del Archivo CSV: Los usuarios suben un archivo CSV con columnas de Fecha, Post, Positividad, Negatividad y Neutralidad. El proyecto procesa estos datos y muestra la evolución de los sentimientos en una gráfica de tiempo.
-
-Procesamiento de Datos: Utiliza PapaParse para analizar y convertir el contenido del archivo CSV en un formato adecuado para su visualización.
-
-Lógica de Visualización: Se utiliza la biblioteca  Chart.js para mostrar los datos en un gráfico de líneas, permitiendo la visualización de la evolución de los sentimientos a lo largo del tiempo.
-
-
-### Proceso de carga:
 
 #### El usuario carga un archivo CSV utilizando un input de tipo archivo en CargarArchivo.vue
 ```
