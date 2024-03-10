@@ -1,15 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <dashboardPage/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import MostrarGrafico from '@/components/MostrarGrafico';
+import CargarArchivo from '@/components/CargarArchivo';
+import dashboardPage from '@/views/dashboardPage';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    dashboardPage,
+    CargarArchivo,
+    MostrarGrafico
+    
   }
 }
 </script>
